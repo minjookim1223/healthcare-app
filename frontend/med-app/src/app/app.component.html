@@ -1,0 +1,31 @@
+@if (showShell()) {
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="header-brand">
+        <span class="brand-icon">⬡</span>
+        <span class="brand-name">MedDash</span>
+      </div>
+      <nav class="tab-nav">
+        <a class="tab-link" routerLink="/profile" routerLinkActive="active">
+          <span class="tab-icon">👤</span> Profile
+        </a>
+        <a class="tab-link" routerLink="/anomaly-detection" routerLinkActive="active">
+          <span class="tab-icon">📈</span> Anomaly Detection
+        </a>
+        <a class="tab-link" routerLink="/cancer-detection" routerLinkActive="active">
+          <span class="tab-icon">🔬</span> Cancer Detection
+        </a>
+        <a class="tab-link" routerLink="/chatbot" routerLinkActive="active">
+          <span class="tab-icon">💬</span> Chatbot
+        </a>
+      </nav>
+      <button class="signout-btn" routerLink="/login">Sign out</button>
+    </header>
+
+    <main class="app-main">
+      <router-outlet />
+    </main>
+  </div>
+} @else {
+  <router-outlet />
+}

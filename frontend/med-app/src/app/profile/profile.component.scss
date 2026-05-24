@@ -1,0 +1,195 @@
+.page-content {
+  padding: 2.5rem 2rem;
+  max-width: 760px;
+}
+
+.page-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.25rem;
+  box-shadow: var(--shadow-card);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.status-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+
+  &.editing {
+    background: var(--accent-subtle);
+    color: var(--accent);
+    border-color: var(--accent-border);
+  }
+}
+
+.card-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.25rem 0;
+}
+
+/* Field rows for name/age */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.field-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.field-value {
+  flex: 1;
+}
+
+.field-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.1rem;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.15s;
+
+  &.short { width: 100px; }
+
+  &:focus {
+    border-bottom-color: var(--accent);
+  }
+
+  &::placeholder { color: var(--text-muted); }
+}
+
+.field-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  border-bottom: 1.5px solid var(--border);
+  display: inline-block;
+  min-width: 120px;
+  padding-bottom: 2px;
+
+  &.empty { color: var(--text-muted); }
+}
+
+/* Block fields for textareas */
+.field-block {
+  margin-bottom: 1.25rem;
+}
+
+.field-label-block {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.field-textarea {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.65rem 0.85rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  box-sizing: border-box;
+
+  &:not(:disabled):focus {
+    border-color: var(--accent);
+    background: var(--surface-1);
+  }
+
+  &:disabled {
+    opacity: 0.75;
+    cursor: default;
+  }
+
+  &::placeholder { color: var(--text-placeholder); }
+}
+
+/* Bio row with button alignment */
+.bio-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+
+.bio-field-wrap {
+  flex: 1;
+}
+
+.action-wrap {
+  flex-shrink: 0;
+  padding-bottom: 1px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1.2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--accent-dark);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

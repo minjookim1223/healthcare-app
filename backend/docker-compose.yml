@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  backend_services:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend_services
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres_db:
+        condition: service_started
+      ollama:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres_db:5432/app_db
+
+  postgres_db:
+    image: pgvector/pgvector:pg16
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app_db
+    ports:
+      - "5432:5432"
+  
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    pull_policy: always
+    tty: true
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "ollama serve &
+       sleep 5 &&
+       ollama pull qwen2.5:7b &&
+       ollama pull all-minilm:22m
+       wait"
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list | grep -q 'qwen2.5:7b' && ollama list | grep -q 'all-minilm:22m'"]
+      interval: 40s
+      timeout: 15s
+      retries: 200
+      start_period: 30s
+    restart: unless-stopped

@@ -1,0 +1,86 @@
+<section class="page-content">
+  <div class="page-card">
+    <div class="card-header">
+      <h1 class="card-title">User Profile</h1>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div class="status-pill" [class.editing]="isEditing()">
+          {{ isEditing() ? 'Editing' : 'View Only' }}
+        </div>
+        <button
+          (click)="logout()"
+          style="padding:0.35rem 0.85rem;font-size:0.8rem;font-weight:600;border:1.5px solid #e2e8f0;border-radius:6px;background:#fff;cursor:pointer;color:#64748b;font-family:inherit;"
+        >Sign out</button>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+
+    <div class="field-group">
+      <div class="field-row">
+        <label class="field-label">Name</label>
+        <div class="field-value">
+          <input
+            *ngIf="isEditing(); else nameDisplay"
+            class="field-input"
+            type="text"
+            [(ngModel)]="profile.name"
+            placeholder="Enter full name"
+          />
+          <ng-template #nameDisplay>
+            <span class="field-text" [class.empty]="!profile.name">
+              {{ profile.name || '—' }}
+            </span>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <label class="field-label">Age</label>
+        <div class="field-value">
+          <input
+            *ngIf="isEditing(); else ageDisplay"
+            class="field-input short"
+            type="number"
+            [(ngModel)]="profile.age"
+            placeholder="Age"
+          />
+          <ng-template #ageDisplay>
+            <span class="field-text" [class.empty]="!profile.age">
+              {{ profile.age || '—' }}
+            </span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-divider"></div>
+
+    <div class="field-block">
+      <label class="field-label-block">Medical Condition</label>
+      <textarea
+        class="field-textarea"
+        [(ngModel)]="profile.medicalCondition"
+        placeholder="Complication Info"
+        [disabled]="!isEditing()"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="field-block bio-row">
+      <div class="bio-field-wrap">
+        <label class="field-label-block">Biographical Details</label>
+        <textarea
+          class="field-textarea"
+          [(ngModel)]="profile.biographicalDetails"
+          placeholder="Bio Information"
+          [disabled]="!isEditing()"
+          rows="3"
+        ></textarea>
+      </div>
+      <div class="action-wrap">
+        <button class="btn-primary" (click)="toggleEdit()">
+          {{ isEditing() ? 'Save Profile' : 'Edit Profile' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

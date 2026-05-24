@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Design Tokens ──────────────────────────────── */
+:root {
+  /* Surfaces */
+  --bg-base:        #f4f6f9;
+  --surface-1:      #ffffff;
+  --surface-2:      #f8f9fb;
+  --surface-hover:  #f0f4ff;
+
+  /* Text */
+  --text-primary:     #0f172a;
+  --text-secondary:   #334155;
+  --text-muted:       #64748b;
+  --text-placeholder: #94a3b8;
+
+  /* Accent (clinical blue) */
+  --accent:          #2563eb;
+  --accent-dark:     #1d4ed8;
+  --accent-subtle:   #eff6ff;
+  --accent-border:   #bfdbfe;
+
+  /* Borders */
+  --border:          #e2e8f0;
+  --border-strong:   #94a3b8;
+
+  /* Radii */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+
+  /* Shadows */
+  --shadow-card:  0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+}
+
+/* ── Reset & Base ───────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input, textarea, button, select {
+  font-family: inherit;
+}
